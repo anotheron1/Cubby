@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: Cubby
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      username: eafocnkumcsxrz
+      password: 2ae1c8f9fa2dee2886ea11abc511e255c07367a929137a4e9086aa7051cbbe41
+      url: jdbc:postgresql://ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/d2n6qfrmcagq2r
+  jpa:
+    database: postgresql
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true
