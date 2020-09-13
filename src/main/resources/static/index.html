@@ -57,8 +57,8 @@
                     '        <td>' + client.phone + '</td>\n' +
                     '        <td>' + client.cupCount + '</td>' +
                     '        <td>' + client.allCup + '</td>' +
-                    '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td>' +
-                    '        <td><button onclick="deleteClient(' + client.id + ')">Delete</button></td></tr>';
+                    '        <td><button onclick="incrClientCup(' + client.clientId + ')">Increment</button></td>' +
+                    '        <td><button onclick="deleteClient(' + client.clientId + ')">Delete</button></td></tr>';
                 document.getElementById("clientsList").innerHTML = html;
             }
         };
@@ -117,8 +117,8 @@
                         '        <td>' + client.phone + '</td>\n' +
                         '        <td>' + client.cupCount + '</td>' +
                         '        <td>' + client.allCup + '</td>' +
-                        '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td>' +
-                        '        <td><button onclick="deleteClient(' + client.id + ')">Delete</button></td></tr>';
+                        '        <td><button onclick="incrClientCup(' + client.clientId + ')">Increment</button></td>' +
+                        '        <td><button onclick="deleteClient(' + client.clientId + ')">Delete</button></td></tr>';
                 }
                 document.getElementById("clientsList").innerHTML = html;
             }
