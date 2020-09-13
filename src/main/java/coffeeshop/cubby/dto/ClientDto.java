@@ -10,4 +10,5 @@ public class ClientDto {
     private String name;
     private long phone;
     private int cupCount;
+    private int allCup;
 }

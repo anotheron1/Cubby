@@ -12,5 +12,11 @@ public interface CubbyDataSourceService {
 
     ClientDto findByPhone(long phone);
 
+    void deleteClient(Integer clientId);
+
     ClientDto saveClient(ClientDto clientDto) throws ValidationException;
+
+    ClientDto incrementCupCountById(int clientId);
+
+    ClientDto decrementCupCountByPhone(ClientDto clientDto) throws ValidationException;
 }

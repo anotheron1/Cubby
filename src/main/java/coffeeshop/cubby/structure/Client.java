@@ -24,6 +24,9 @@ public class Client {
     @Column(name = "cup_count")
     private int cupCount;
 
+    @Column(name = "all_cup")
+    private int allCup;
+
     @Override
     public String toString() {
         return "Client{" +
@@ -31,6 +34,7 @@ public class Client {
                 ", name = " + name +
                 ", phone = " + phone +
                 ", cupCount = " + cupCount +
+                ", allCup = " + allCup +
                 '}';
     }
 }

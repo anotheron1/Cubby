@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.xml.bind.ValidationException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -52,10 +51,40 @@ public class CubbyDataSourceServiceImpl implements CubbyDataSourceService {
     }
 
     @Override
+    public void deleteClient(Integer clientId) {
+        clientRepository.deleteById(clientId);
+    }
+
+    @Override
     public ClientDto saveClient(ClientDto clientDto) throws ValidationException {
         validateClientDto(clientDto);
         Client savedClient = clientRepository.save(clientConverter.fromClientDtoToClient(clientDto));
         return clientConverter.fromClientToClientDto(savedClient);
+    }
+
+    @Override
+    public ClientDto incrementCupCountById(int clientId) {
+        Client client = clientRepository.findById(clientId).orElse(null);
+        if (client != null) {
+            client.setCupCount(client.getCupCount() + 1);
+            if (client.getCupCount() >= 6) {
+                client.setCupCount(0);
+            }
+            client.setAllCup(client.getAllCup() + 1);
+            return clientConverter.fromClientToClientDto(clientRepository.save(client));
+        }
+        return null;
+    }
+
+    @Override
+    public ClientDto decrementCupCountByPhone(ClientDto clientDto) throws ValidationException {
+        validateClientDto(clientDto);
+        Client client = clientConverter.fromClientDtoToClient(clientDto);
+        client.setCupCount(client.getCupCount() - 1);
+        if (client.getCupCount() == -1) {
+            client.setCupCount(0);
+        }
+        return clientConverter.fromClientToClientDto(clientRepository.save(client));
     }
 
     private void validateClientDto(ClientDto clientDto) throws ValidationException {

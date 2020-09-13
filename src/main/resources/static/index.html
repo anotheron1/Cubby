@@ -47,13 +47,17 @@
                     '        <th>Client id</th>\n' +
                     '        <th>Client name</th>\n' +
                     '        <th>Client phone</th>\n' +
-                    '        <th>Client cupCount</th>\n' +
+                    '        <th>Client cup count</th>\n' +
+                    '        <th>Client all cup</th>\n' +
+                    '        <th>Increment</th>\n' +
                     '        <th>Delete</th>\n' +
                     '    </tr>';
                 html = html + '<tr><td>' + client.id + '</td>\n' +
                     '        <td>' + client.name + '</td>\n' +
                     '        <td>' + client.phone + '</td>\n' +
                     '        <td>' + client.cupCount + '</td>' +
+                    '        <td>' + client.allCup + '</td>' +
+                    '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td></tr>' +
                     '        <td><button onclick="deleteClient(' + client.id + ')">Delete</button></td></tr>';
                 document.getElementById("clientsList").innerHTML = html;
             }
@@ -66,6 +70,16 @@
         var xhttp = new XMLHttpRequest();
         xhttp.open("DELETE", "https://cubby-app.herokuapp.com/clients/delete/" + clientId, true);
         xhttp.send();
+
+        loadClients();
+    }
+
+    function incrClientCup(clientId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/incr?id=" + clientId, true);
+        xhttp.send();
+
+        1
     }
 
     function createClient() {
@@ -90,7 +104,9 @@
                     '        <th>Client id</th>\n' +
                     '        <th>Client name</th>\n' +
                     '        <th>Client phone</th>\n' +
-                    '        <th>Client cupCount</th>\n' +
+                    '        <th>Client cup count</th>\n' +
+                    '        <th>Client all cup</th>\n' +
+                    '        <th>Increment</th>\n' +
                     '        <th>Delete</th>\n' +
                     '    </tr>';
                 for (var i = 0; i < clients.length; i++) {
@@ -100,8 +116,9 @@
                         '        <td>' + client.name + '</td>\n' +
                         '        <td>' + client.phone + '</td>\n' +
                         '        <td>' + client.cupCount + '</td>' +
+                        '        <td>' + client.allCup + '</td>' +
+                        '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td></tr>' +
                         '        <td><button onclick="deleteClient(' + client.id + ')">Delete</button></td></tr>';
-
                 }
                 document.getElementById("clientsList").innerHTML = html;
             }

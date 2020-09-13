@@ -12,6 +12,7 @@ public class ClientConverter {
                 .name(clients.getName())
                 .phone(clients.getPhone())
                 .cupCount(clients.getCupCount())
+                .allCup(clients.getAllCup())
                 .build();
     }
 
@@ -21,6 +22,7 @@ public class ClientConverter {
                 .name(clientDto.getName())
                 .phone(clientDto.getPhone())
                 .cupCount(clientDto.getCupCount())
+                .allCup(clientDto.getAllCup())
                 .build();
     }
 }
