@@ -1,7 +1,6 @@
 package coffeeshop.cubby.structure;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
+@Builder
 public class Client {
     @Id
     @Column(name = "client_id")

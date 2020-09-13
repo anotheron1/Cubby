@@ -1,13 +1,16 @@
 package coffeeshop.cubby.services;
 
-import coffeeshop.cubby.structure.Client;
+import coffeeshop.cubby.dto.ClientDto;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
 
 public interface CubbyDataSourceService {
-    List<Client> getAllClients();
+    List<ClientDto> getAllClients();
 
-    List<Client> findAllByCupCount(int cupCount);
+    List<ClientDto> findAllByCupCount(int cupCount);
 
-    Client findByPhone(long phone);
+    ClientDto findByPhone(long phone);
+
+    ClientDto saveClient(ClientDto clientDto) throws ValidationException;
 }
