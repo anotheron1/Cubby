@@ -76,7 +76,7 @@
 
     function incrClientCup(clientId) {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/incr?id=" + clientId, true);
+        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/incr/" + clientId, true);
         xhttp.send();
 
         loadClients();

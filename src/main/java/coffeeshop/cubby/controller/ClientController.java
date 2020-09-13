@@ -24,8 +24,8 @@ public class ClientController {
         return cubbyService.saveClient(clientDto);
     }
 
-    @GetMapping("/incr")
-    public ClientDto incrementCup(@RequestParam int clientId) {
+    @GetMapping("/incr/{clientId}")
+    public ClientDto incrementCup(@PathVariable int clientId) {
         log.info("Handling increment clients cup count: ");
         return cubbyService.incrementCupCountById(clientId);
     }
