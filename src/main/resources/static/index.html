@@ -52,12 +52,12 @@
                     '        <th>Increment</th>\n' +
                     '        <th>Delete</th>\n' +
                     '    </tr>';
-                html = html + '<tr><td>' + client.id + '</td>\n' +
+                html = html + '<tr><td>' + client.clientId + '</td>\n' +
                     '        <td>' + client.name + '</td>\n' +
                     '        <td>' + client.phone + '</td>\n' +
                     '        <td>' + client.cupCount + '</td>' +
                     '        <td>' + client.allCup + '</td>' +
-                    '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td></tr>' +
+                    '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td>' +
                     '        <td><button onclick="deleteClient(' + client.id + ')">Delete</button></td></tr>';
                 document.getElementById("clientsList").innerHTML = html;
             }
@@ -112,12 +112,12 @@
                 for (var i = 0; i < clients.length; i++) {
                     var client = clients[i];
                     console.log(client);
-                    html = html + '<tr><td>' + client.id + '</td>\n' +
+                    html = html + '<tr><td>' + client.clientId + '</td>\n' +
                         '        <td>' + client.name + '</td>\n' +
                         '        <td>' + client.phone + '</td>\n' +
                         '        <td>' + client.cupCount + '</td>' +
                         '        <td>' + client.allCup + '</td>' +
-                        '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td></tr>' +
+                        '        <td><button onclick="incrClientCup(' + client.id + ')">Increment</button></td>' +
                         '        <td><button onclick="deleteClient(' + client.id + ')">Delete</button></td></tr>';
                 }
                 document.getElementById("clientsList").innerHTML = html;
