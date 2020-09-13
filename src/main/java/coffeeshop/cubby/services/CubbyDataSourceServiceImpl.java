@@ -54,8 +54,8 @@ public class CubbyDataSourceServiceImpl implements CubbyDataSourceService {
     @Override
     public ClientDto saveClient(ClientDto clientDto) throws ValidationException {
         validateClientDto(clientDto);
-        Client savedUser = clientRepository.save(clientConverter.fromClientDtoToClient(clientDto));
-        return clientConverter.fromClientToClientDto(savedUser);
+        Client savedClient = clientRepository.save(clientConverter.fromClientDtoToClient(clientDto));
+        return clientConverter.fromClientToClientDto(savedClient);
     }
 
     private void validateClientDto(ClientDto clientDto) throws ValidationException {

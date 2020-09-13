@@ -20,19 +20,19 @@ public class ClientController {
     private final CubbyDataSourceService cubbyService;
 
     @PostMapping("/save")
-    public ClientDto saveUsers(@RequestBody ClientDto clientDto) throws ValidationException {
+    public ClientDto saveClient(@RequestBody ClientDto clientDto) throws ValidationException {
         log.info("Handling save users: " + clientDto);
         return cubbyService.saveClient(clientDto);
     }
 
     @GetMapping("/findAll")
-    public List<ClientDto> findAllUsers() {
+    public List<ClientDto> findAllClients() {
         log.info("Handling find all clients request");
         return cubbyService.getAllClients();
     }
 
     @GetMapping("/findByPhone")
-    public ClientDto findByLogin(@RequestParam long phone) {
+    public ClientDto findByPhone(@RequestParam long phone) {
         log.info("Handling find by phone request: " + phone);
         return cubbyService.findByPhone(phone);
     }
