@@ -58,13 +58,13 @@
                 document.getElementById("clientsList").innerHTML = html;
             }
         };
-        xhttp.open("GET", "http://localhost:8080/clients/findByPhone?phone=" + phone, true);
+        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/findByPhone?phone=" + phone, true);
         xhttp.send();
     }
 
     function deleteClient(clientId) {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("DELETE", "http://localhost:8080/clients/delete/" + clientId, true);
+        xhttp.open("DELETE", "https://cubby-app.herokuapp.com/clients/delete/" + clientId, true);
         xhttp.send();
     }
 
@@ -74,7 +74,7 @@
         var clientCupCount = document.getElementById("client_cupCount").value;
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.open("POST", "http://localhost:8080/clients/save");
+        xmlhttp.open("POST", "https://cubby-app.herokuapp.com/clients/save");
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send(JSON.stringify({name: clientName, phone: clientPhone, cupCount: clientCupCount}));
 
@@ -106,7 +106,7 @@
                 document.getElementById("clientsList").innerHTML = html;
             }
         };
-        xhttp.open("GET", "http://localhost:8080/clients/findAll", true);
+        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/findAll", true);
         xhttp.send();
     }
 
