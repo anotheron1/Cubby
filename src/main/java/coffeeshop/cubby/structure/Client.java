@@ -1,16 +1,13 @@
 package coffeeshop.cubby.structure;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Table(name = "clients")
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class Client {
     @Id
@@ -25,19 +22,6 @@ public class Client {
 
     @Column(name = "cup_count")
     private int cupCount;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return clientId == client.clientId;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(clientId);
-    }
 
     @Override
     public String toString() {

@@ -11,5 +11,4 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
     List<Client> findAllByCupCount(int cupCount);
 
     Client findByPhone(long phone);
-
 }
