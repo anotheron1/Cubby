@@ -64,16 +64,13 @@ public class CubbyDataSourceServiceImpl implements CubbyDataSourceService {
 
     @Override
     public ClientDto incrementCupCountById(int clientId) {
-        Client client = clientRepository.findById(clientId).orElse(null);
-        if (client != null) {
-            client.setCupCount(client.getCupCount() + 1);
-            if (client.getCupCount() >= 6) {
-                client.setCupCount(0);
-            }
-            client.setAllCup(client.getAllCup() + 1);
-            return clientConverter.fromClientToClientDto(clientRepository.save(client));
+        Client client = clientRepository.findById(clientId).get();
+        client.setCupCount(client.getCupCount() + 1);
+        if (client.getCupCount() >= 6) {
+            client.setCupCount(0);
         }
-        return null;
+        client.setAllCup(client.getAllCup() + 1);
+        return clientConverter.fromClientToClientDto(clientRepository.save(client));
     }
 
     @Override
