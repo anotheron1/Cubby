@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333333;
+}
+
+.container {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20vh;
+}
+
+.page-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.form-wrapper {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.form-wrapper:last-child {
+    margin-bottom: 0;
+}
+
+.form-header, .table-header {
+    margin-bottom: 30px;
+}
+
+.form-header__title, .table-header__title {
+    font-size: 20px;
+}
+
+.form-body__input {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-body__input input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    outline-color: #1c83e5;
+}
+
+.form-body__input label {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #666666;
+}
+
+.form-body__submit {
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 13px;
+    border: 1px solid #1c83e5;
+    background-color: rgba(28, 131, 229, .1);
+    border-radius: 4px;
+    color: #1c83e5;
+    font-weight: 600;
+    transition: background-color ease .3s, color ease .3s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn--table {
+    padding: 8px;
+    background-color: #1c83e5;
+    color: #fff;
+}
+
+.btn--table:hover {
+    background-color: #3097F9;
+    border-color: #3097F9;
+}
+
+.btn--delete {
+    background-color: #DA413D;
+    border-color: #DA413D;
+}
+
+.btn--delete:hover {
+    background-color: #EE5551;
+    border-color: #EE5551;
+}
+
+.form-body__submit button:hover {
+    background-color: #1c83e5;
+    color: #fff;
+}
+
+.table-wrapper {
+    width: calc(60% - 40px);
+    margin-left: 40px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.table {
+    width: 100%;
+}
+
+.table-head {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.table-body {
+    overflow-y: auto;
+}
+
+td {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+@media screen and (max-width: 1520px) {
+
+    .container {
+        max-width: 900px;
+        padding-top: 10vh;
+    }
+
+    .page-wrapper {
+        flex-direction: column;
+    }
+
+    .forms {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
+}
+
+
+

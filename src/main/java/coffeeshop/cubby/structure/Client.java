@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Builder
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id")
     private int clientId;
 

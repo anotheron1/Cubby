@@ -73,17 +73,6 @@ public class CubbyDataSourceServiceImpl implements CubbyDataSourceService {
         return clientConverter.fromClientToClientDto(clientRepository.save(client));
     }
 
-    @Override
-    public ClientDto decrementCupCountByPhone(ClientDto clientDto) throws ValidationException {
-        validateClientDto(clientDto);
-        Client client = clientConverter.fromClientDtoToClient(clientDto);
-        client.setCupCount(client.getCupCount() - 1);
-        if (client.getCupCount() == -1) {
-            client.setCupCount(0);
-        }
-        return clientConverter.fromClientToClientDto(clientRepository.save(client));
-    }
-
     private void validateClientDto(ClientDto clientDto) throws ValidationException {
         if (isNull(clientDto)) {
             throw new ValidationException("Object client is null");

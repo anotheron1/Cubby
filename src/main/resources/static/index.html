@@ -1,133 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+	<meta charset="UTF-8"/>
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width"/>
+	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>HTML Table</h2>
+<div class="container">
+	<div class="page-wrapper">
+		<div class="forms">
+			<div class="form-wrapper">
+				<div class="form-header">
+					<h3 class="form-header__title">Проверка номера</h3>
+				</div>
+				<div class="form-body">
+					<form action="" method="">
+						<div class="form-body__input">
+							<label for="">Телефон</label>
+							<input type="text" name="" id="search_field">
+						</div>
+						<div class="form-body__submit">
+							<button class="btn" onclick="searchByPhone()">Искать</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="form-wrapper">
+				<div class="form-header">
+					<h3 class="form-header__title">Клиент</h3>
+				</div>
+				<div class="form-body">
+					<form action="#">
+						<div class="form-body__input">
+							<label for="">Телефон</label>
+							<input type="text" name="" id="client_phone">
+						</div>
+						<div class="form-body__input">
+							<label for="">Имя, Фамилия</label>
+							<input type="text" name="" id="client_name">
+						</div>
+						<div class="form-body__input">
+							<label for="">Кол-во чашек</label>
+							<input type="number" name="" id="client_cupCount">
+						</div>
+						<div class="form-body__submit">
+							<button class="btn" onclick="createClient()">Подтвердить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
-<table id="clientsList">
 
-</table>
+		<div class="table-wrapper">
+			<div class="table-header">
+				<h3 class="table-header__title">Список клиентов</h3>
+			</div>
+			<div class="table-body">
+				<table class="table" id="clientsList">
+					<tr>
+						<th>
+							<div class="table-head">Номер</div>
+						</th>
+						<th>
+							<div class="table-head">Имя</div>
+						</th>
+						<th>
+							<div class="table-head">Телефон</div>
+						</th>
+						<th>
+							<div class="table-head">Кол-во чашек</div>
+						</th>
+						<th>
+							<div class="table-head">Всего чашек</div>
+						</th>
+						<th>
+							<div class="table-head">Увеличить</div>
+						</th>
+						<th>
+							<div class="table-head">Удалить</div>
+						</th>
+					</tr>
 
-<form action="#">
-    <input id="client_name" placeholder="Client name">
-    <input id="client_phone" placeholder="Client phone">
-    <input id="client_cupCount" placeholder="Client cupCount">
-    <button onclick="createClient()">Create client</button>
-</form>
 
-<input id="search_field">
-<button onclick="searchByPhone()">Search by Phone</button>
-<script>
-    function searchByPhone() {
-        var phone = document.getElementById("search_field").value;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var client = JSON.parse(this.responseText);
-                var html = '<tr>\n' +
-                    '        <th>Client id</th>\n' +
-                    '        <th>Client name</th>\n' +
-                    '        <th>Client phone</th>\n' +
-                    '        <th>Client cup count</th>\n' +
-                    '        <th>Client all cup</th>\n' +
-                    '        <th>Increment</th>\n' +
-                    '        <th>Delete</th>\n' +
-                    '    </tr>';
-                html = html + '<tr><td>' + client.clientId + '</td>\n' +
-                    '        <td>' + client.name + '</td>\n' +
-                    '        <td>' + client.phone + '</td>\n' +
-                    '        <td>' + client.cupCount + '</td>' +
-                    '        <td>' + client.allCup + '</td>' +
-                    '        <td><button onclick="incrClientCup(' + client.clientId + ')">Increment</button></td>' +
-                    '        <td><button onclick="deleteClient(' + client.clientId + ')">Delete</button></td></tr>';
-                document.getElementById("clientsList").innerHTML = html;
-            }
-        };
-        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/findByPhone?phone=" + phone, true);
-        xhttp.send();
-    }
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
 
-    function deleteClient(clientId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("DELETE", "https://cubby-app.herokuapp.com/clients/delete/" + clientId, true);
-        xhttp.send();
-
-        loadClients();
-    }
-
-    function incrClientCup(clientId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/incr/" + clientId, true);
-        xhttp.send();
-
-        loadClients();
-    }
-
-    function createClient() {
-        var clientName = document.getElementById("client_name").value;
-        var clientPhone = document.getElementById("client_phone").value;
-        var clientCupCount = document.getElementById("client_cupCount").value;
-
-        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.open("POST", "https://cubby-app.herokuapp.com/clients/save");
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(JSON.stringify({name: clientName, phone: clientPhone, cupCount: clientCupCount}));
-
-        loadClients();
-    }
-
-    function loadClients() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var clients = JSON.parse(this.responseText);
-                var html = '<tr>\n' +
-                    '        <th>Client id</th>\n' +
-                    '        <th>Client name</th>\n' +
-                    '        <th>Client phone</th>\n' +
-                    '        <th>Client cup count</th>\n' +
-                    '        <th>Client all cup</th>\n' +
-                    '        <th>Increment</th>\n' +
-                    '        <th>Delete</th>\n' +
-                    '    </tr>';
-                for (var i = 0; i < clients.length; i++) {
-                    var client = clients[i];
-                    console.log(client);
-                    html = html + '<tr><td>' + client.clientId + '</td>\n' +
-                        '        <td>' + client.name + '</td>\n' +
-                        '        <td>' + client.phone + '</td>\n' +
-                        '        <td>' + client.cupCount + '</td>' +
-                        '        <td>' + client.allCup + '</td>' +
-                        '        <td><button onclick="incrClientCup(' + client.clientId + ')">Increment</button></td>' +
-                        '        <td><button onclick="deleteClient(' + client.clientId + ')">Delete</button></td></tr>';
-                }
-                document.getElementById("clientsList").innerHTML = html;
-            }
-        };
-        xhttp.open("GET", "https://cubby-app.herokuapp.com/clients/findAll", true);
-        xhttp.send();
-    }
-
-    loadClients();
-</script>
+<script src="app.js"></script>
 </body>
 </html>

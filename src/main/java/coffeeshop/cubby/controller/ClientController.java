@@ -30,12 +30,6 @@ public class ClientController {
         return cubbyService.incrementCupCountById(clientId);
     }
 
-//    @PostMapping("/decr")
-//    public ClientDto decrementCup(@RequestBody ClientDto clientDto) throws ValidationException {
-//        log.info("Handling decrement clients cup count: " + clientDto);
-//        return cubbyService.decrementCupCountByPhone(clientDto);
-//    }
-
     @GetMapping("/findAll")
     public List<ClientDto> findAllClients() {
         log.info("Handling find all clients request");
@@ -49,7 +43,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUsers(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteClient(@PathVariable Integer id) {
         log.info("Handling delete user request: " + id);
         cubbyService.deleteClient(id);
         return ResponseEntity.ok().build();

@@ -18,7 +18,7 @@ class CubbyApplicationTests {
 //        System.out.println(cubbyService.getAllClients().toString());
 //        System.out.println(cubbyService.findAllByCupCount(1).toString());
 //        System.out.println(cubbyService.findByPhone(89992607697L).toString());
-//        System.out.println(cubbyService.incrementCupCountById(2).toString());
-        cubbyService.deleteClient(8);
+        System.out.println(cubbyService.incrementCupCountById(3).toString());
+//        cubbyService.deleteClient(8);
     }
 }

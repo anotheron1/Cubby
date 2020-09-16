@@ -17,6 +17,4 @@ public interface CubbyDataSourceService {
     ClientDto saveClient(ClientDto clientDto) throws ValidationException;
 
     ClientDto incrementCupCountById(int clientId);
-
-    ClientDto decrementCupCountByPhone(ClientDto clientDto) throws ValidationException;
 }
